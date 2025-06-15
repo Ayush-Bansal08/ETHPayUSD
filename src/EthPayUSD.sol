@@ -66,16 +66,16 @@ contract EthPayUSD {
         emit AmountSent(amountTobeSent); // this would reflect thw user that ho much amount has been sent
         AddressToAmountSent[msg.sender] = amountUSD;
 
-            uint256 refund = msg.value - amountTobeSent;
+        uint256 refund = msg.value - amountTobeSent;
 
-            if (refund > 0) {
-                (bool refundSuccess,) = msg.sender.call{value: refund}("");
-                require(refundSuccess, "Refund failed");
-                emit RefundRecieved(refund);
-            }
+        if (refund > 0) {
+            (bool refundSuccess,) = msg.sender.call{value: refund}("");
+            require(refundSuccess, "Refund failed");
+            emit RefundRecieved(refund);
+        }
     }
 
-    function getOwnner() public view  returns(address){
+    function getOwnner() public view returns (address) {
         return i_owner;
     }
 }

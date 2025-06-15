@@ -10,15 +10,16 @@ contract EthPayUSDTest is Test {
     EthPayUSD public ethpayusd;
 
     DeployEthPayUSD public deployethpayusd;
-     address owner ;
+    address owner;
+
     function setUp() external {
         deployethpayusd = new DeployEthPayUSD();
         ethpayusd = deployethpayusd.run();
         // number = number + 1;
         owner = ethpayusd.getOwnner();
     }
-    receive() external payable {}
 
+    receive() external payable {}
 
     // now the test
     // function testDemo() public view{
@@ -32,11 +33,10 @@ contract EthPayUSDTest is Test {
     }
 
     function testOwnerCantSend() public {
-            vm.prank(owner);
-             address payable RECIEVER = payable(makeAddr("RECIEVER"));
-          ethpayusd.sendMoney(10, RECIEVER);
-
-        }
+        vm.prank(owner);
+        address payable RECIEVER = payable(makeAddr("RECIEVER"));
+        ethpayusd.sendMoney(10, RECIEVER);
+    }
 
     function testSendersSendRecieverRecieves() public {
         address SENDER = makeAddr("SENDER");
@@ -46,25 +46,22 @@ contract EthPayUSDTest is Test {
         vm.deal(RECIEVER, 0 ether);
 
         vm.prank(SENDER);
-        ethpayusd.sendMoney{value: ethpayusd.getETHamount(10)}(10, RECIEVER); // here i have to actually send the value the 10 i am taking int eh argumane is for thr record for the mapping to stroe that hwo is sending how much and here user would enter 10 dolalr but we convert it to the required eth necessary 
+        ethpayusd.sendMoney{value: ethpayusd.getETHamount(10)}(10, RECIEVER); // here i have to actually send the value the 10 i am taking int eh argumane is for thr record for the mapping to stroe that hwo is sending how much and here user would enter 10 dolalr but we convert it to the required eth necessary
         console.log(address(RECIEVER).balance);
         assert(address(RECIEVER).balance != 0);
     }
-    
-        function testRefundIsSuccessful() public {
-            address SENDER = makeAddr("SENDER");
-            vm.deal(SENDER, 10 ether);
 
-            address payable RECIEVER = payable(makeAddr("RECIEVER"));
-            vm.deal(RECIEVER, 0 ether);
+    function testRefundIsSuccessful() public {
+        address SENDER = makeAddr("SENDER");
+        vm.deal(SENDER, 10 ether);
 
-            vm.prank(SENDER);
-            vm.recordLogs();
-            ethpayusd.sendMoney{value: ethpayusd.getETHamount(20)}(10, RECIEVER);
-            Vm.Log[] memory getemmitedevents = vm.getRecordedLogs();
-            assert(getemmitedevents.length>0);
-        }
+        address payable RECIEVER = payable(makeAddr("RECIEVER"));
+        vm.deal(RECIEVER, 0 ether);
 
-        
-
+        vm.prank(SENDER);
+        vm.recordLogs();
+        ethpayusd.sendMoney{value: ethpayusd.getETHamount(20)}(10, RECIEVER);
+        Vm.Log[] memory getemmitedevents = vm.getRecordedLogs();
+        assert(getemmitedevents.length > 0);
+    }
 }

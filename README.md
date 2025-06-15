@@ -1,5 +1,5 @@
 💡Why use EthPayUSD?
-In many dApps, users are required to pay in ETH—but pricing is often communicated in USD. This creates confusion, overpayments, and price fluctuation risks. EthPayUSD bridges this gap by letting users:
+In many dApps, users are required to pay in ETH, but pricing is often communicated in USD. This creates confusion, overpayments, and price fluctuation risks. EthPayUSD bridges this gap by letting users:
 👉 Specify an amount in USD instead of manually calculating ETH.
 👉 Reliably convert that amount into ETH using live on-chain price feeds.
 👉 Automatically refund any excess ETH if overpaid.
