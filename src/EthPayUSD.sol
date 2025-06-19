@@ -37,13 +37,20 @@ contract EthPayUSD {
     mapping(address => uint256) AddressToAmountSent;
 
     // function to get the price converted
+
+    function get1ETHPrice() public view returns (uint256) {
+        (, int256 price,,,) = s_pricefeed.latestRoundData();
+        return uint256(price);
+    }
+
     function getETHamount(uint256 usdAmountInDollars) public view returns (uint256) {
         (, int256 price,,,) = s_pricefeed.latestRoundData();
         if (price < 0) {
             revert InvalidPrice();
         }
-        uint256 ethAmount = (usdAmountInDollars * 1e28) / uint256(price);
-        return ethAmount; // so here we got the amount sent to the reciever
+        uint256 ethAmount = (usdAmountInDollars * 1e26) / uint256(price);
+
+        return ethAmount; // so here we got the amount sent to the reciever in wei
     }
     //as now we got the amount of eth we want we can send and our price in eth
     //fucntion to pay somone
@@ -56,7 +63,8 @@ contract EthPayUSD {
             revert NotValidAdddress();
         }
         uint256 amountTobeSent = getETHamount(amountUSD);
-        if (amountTobeSent > getETHamount(msg.value)) {
+        if (amountTobeSent > msg.value) {
+            // msg.value is already in eth as we are sending that only
             revert PayTheExactAmountWritten();
         }
         (bool success,) = address(Reciever).call{value: amountTobeSent}("");
