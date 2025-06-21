@@ -3,9 +3,7 @@ import React from "react";
 function Contact() {
   return (
     <div className="h-screen bg-gradient-to-br from-black via-[#0a0f1c] to-black flex items-center justify-center px-4">
-      <form
-        action="https://formsubmit.co/ab262133@gmail.com"
-        method="POST"
+     <form action="https://formsubmit.co/ab262133@gmail.com" method="POST" 
         className="w-full max-w-lg bg-black/60 backdrop-blur-lg border border-blue-900 rounded-3xl shadow-[0_0_30px_rgba(0,89,255,0.2)] p-10 text-white relative overflow-hidden group"
       >
         <div className="absolute inset-0 opacity-10 group-hover:opacity-25 transition duration-700 bg-gradient-to-br from-blue-700 via-transparent to-blue-900 rounded-3xl blur-2xl pointer-events-none"></div>
