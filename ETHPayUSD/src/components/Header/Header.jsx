@@ -142,6 +142,10 @@ const walletAddress = "0x49880B9d2ebcD8588DD44De532950678dF99AA8D";
 
 
 const ConnectWallet = async()=>{
+ if(!window.ethereum){
+  alert("Please Install Metamask");
+  return;
+ }
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   await provider.send("eth_requestAccounts",[]);
   // const signer = provider.getSigner();
