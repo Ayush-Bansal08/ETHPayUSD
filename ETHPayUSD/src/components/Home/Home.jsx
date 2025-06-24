@@ -29,11 +29,11 @@ function Home() {
     >
       <h1
         className="
-          text-4xl        /* mobile */
-          sm:text-6xl     /* desktop */
+          text-4xl      
+          sm:text-6xl     
           font-bold
-          ml-0            /* reset on mobile */
-          sm:ml-90        /* original desktop margin */
+          ml-0            
+          sm:ml-90        
           mb-5
           text-transparent
           bg-clip-text
@@ -46,13 +46,13 @@ function Home() {
 
       <p
         className="
-          text-base        /* mobile */
-          sm:text-lg       /* desktop */
+          text-base     
+          sm:text-lg       
           font-bold
-          ml-0              /* reset on mobile */
-          sm:ml-90          /* original desktop margin */
-          max-w-full       /* fill on mobile */
-          sm:max-w-[700px]  /* original desktop width */
+          ml-0              
+          sm:ml-90         
+          max-w-full       
+          sm:max-w-[700px]  
           leading-relaxed
         "
         style={{ marginTop: '10px', lineHeight: '1.6' }}
@@ -68,12 +68,12 @@ function Home() {
       <p
         className="
           mt-4
-          text-xl        /* mobile */
-          sm:text-2xl    /* desktop */
+          text-xl        
+          sm:text-2xl    
           font-bold
           animate-bounce
-          ml-0           /* reset on mobile */
-          sm:ml-80       /* original desktop margin */
+          ml-0           
+          sm:ml-80       
           drop-shadow-lg
         "
       >
@@ -84,8 +84,8 @@ function Home() {
         to="/Send"
         className="
           mt-2
-          ml-0               /* reset on mobile */
-          sm:ml-85           /* original desktop margin */
+          ml-0               
+          sm:ml-85           
           inline-block
           bg-gradient-to-r from-purple-500 to-blue-500
           hover:from-pink-500 hover:to-yellow-500
