@@ -1,51 +1,37 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import emojii from "../../Images/emojii.png"
+import emojii from "../../Images/emojii.png";
+
 function Home() {
-   
-
-  const pageStyle = {
-    minHeight: '90vh',
-    margin: 0,
-    padding: 0,
-    fontFamily: 'Segoe UI, sans-serif',
-    color: 'white',
-    backgroundImage: `
-      linear-gradient(to right, #0f2027, #203a43, #2c5364),
-      url('https://images.unsplash.com/photo-1734359052721-be5fddda39db?fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDM5fHx8ZW58MHx8fHx8&ixlib=rb-4.0.3&q=60&w=3000 ')
-    `,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundBlendMode: 'overlay',
-    display: 'flex',
-    backgroundPosition: 'center',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center'
-  };
-
   return (
-    <>
-    <div style={pageStyle}>
-      <h1 className=" text-6xl font-bold ml-90 mb-5 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-white animate-pulse">Welcome To ETHPayUSD</h1>
-      <p className=" ml-90 font-bold text-white  " style={{marginTop: '10px', maxWidth: '700px', lineHeight: '1.6' }}>ETHPayUSD is a powerful decentralized platform that transforms the way you send and receive payments by enabling seamless Ethereum (ETH) to USD transactions. Whether you're lending, borrowing, or managing funds, ETHPayUSD ensures speed, transparency, and security, all powered by blockchain technology. With a clean user interface and smart contract automation, it's your gateway to the future of crypto finance.</p>
-      <br />
-       <p className="text-white text-2xl font-bold mb-4 animate-bounce ml-80     drop-shadow-lg">
-  🚀 Make Your Transaction
-</p>
+    <div className="min-h-screen flex flex-col items-center justify-center text-white text-center relative bg-gradient-to-r from-gray-900 via-blue-900 to-black overflow-hidden px-4 py-10">
+      <h1 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-500 to-white bg-clip-text text-transparent animate-pulse">
+        Welcome To ETHPayUSD
+      </h1>
 
-<NavLink 
-  to="/Send" 
-  className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-white font-semibold py-2 px-4 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out ml-85 animate-pulse"
->
-  Send Money
-</NavLink>
-    <NavLink to="'/Contact">
-    <img src={emojii} alt="image" className="w-90 absolute bottom-30 left-2  object-cover rounded-xl transition-transform duration-300 hover:scale-110 " />
-    </NavLink>
+      <p className="max-w-2xl mt-6 text-lg md:text-xl font-medium leading-relaxed text-gray-200">
+        ETHPayUSD is a powerful decentralized platform that transforms the way you send and receive payments by enabling seamless Ethereum (ETH) to USD transactions. Whether you're lending, borrowing, or managing funds, ETHPayUSD ensures speed, transparency, and security — all powered by blockchain technology. With a clean user interface and smart contract automation, it's your gateway to the future of crypto finance.
+      </p>
+
+      <p className="mt-8 text-2xl font-semibold animate-bounce">
+        🚀 Make Your Transaction
+      </p>
+
+      <NavLink
+        to="/Send"
+        className="mt-4 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-white font-bold py-2 px-6 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out"
+      >
+        Send Money
+      </NavLink>
+
+      <NavLink to="/Contact">
+        <img
+          src={emojii}
+          alt="emoji"
+          className="w-32 absolute bottom-10 left-5 rounded-xl transition-transform duration-300 hover:scale-110"
+        />
+      </NavLink>
     </div>
-    </>
   );
 }
 
