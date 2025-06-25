@@ -12,19 +12,24 @@ contract HelperConfig is Script {
     NetworkConfig public ActiveNetwork;
 
     function getSepoliaTestnet() public pure returns (NetworkConfig memory) {
-        NetworkConfig memory SepoliaConfig =
-            NetworkConfig({pricefeed: address(0x694AA1769357215DE4FAC081bf1f309aDC325306)});
-        //0x694AA1769357215DE4FAC081bf1f309aDC325306
-
-        return SepoliaConfig;
+        return NetworkConfig({
+            pricefeed: address(0x694AA1769357215DE4FAC081bf1f309aDC325306) // ETH/USD on Sepolia
+        });
     }
 
-    // first the constructor would run thn the chainid would be detected the the activnetwrk is et eiht th epricefeed that we want
+    function getMainnetConfig() public pure returns (NetworkConfig memory) {
+        return NetworkConfig({
+            pricefeed: address(0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419) // ETH/USD on Mainnet
+        });
+    }
+
     constructor() {
         if (block.chainid == 11155111) {
             ActiveNetwork = getSepoliaTestnet();
+        } else if (block.chainid == 1) {
+            ActiveNetwork = getMainnetConfig();
         } else {
-            revert("enter only eth sepolia testnet");
+            revert("Unsupported chain. Use Sepolia or Mainnet only.");
         }
     }
 }
